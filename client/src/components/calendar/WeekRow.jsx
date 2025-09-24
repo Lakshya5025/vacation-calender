@@ -12,7 +12,10 @@ const WeekRow = ({ weekStart, month, allHolidays }) => {
 
   // --- CORE COLORING LOGIC ---
   const holidaysInThisWeek = allHolidays.filter((holiday) =>
-    isWithinInterval(new Date(holiday.date), { start: weekStart, end: weekEnd })
+    isWithinInterval(new Date(holiday.date.iso), {
+      start: weekStart,
+      end: weekEnd,
+    })
   );
 
   let rowClassName = "week-row";
@@ -32,7 +35,7 @@ const WeekRow = ({ weekStart, month, allHolidays }) => {
           month={month}
           holidays={holidaysInThisWeek.filter(
             (h) =>
-              format(new Date(h.date), "yyyy-MM-dd") ===
+              format(new Date(h.date.iso), "yyyy-MM-dd") ===
               format(day, "yyyy-MM-dd")
           )}
         />

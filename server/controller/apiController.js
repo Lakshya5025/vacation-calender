@@ -1,7 +1,7 @@
 
 const axios = require('axios');
 const getPublicHolidays = async (req, res) => {
-    console.log("request made to getpublic  holidatas")
+    console.log("request made to getpublic  holidays")
     const { countryCode, year } = req.params;
     const API_KEY = process.env.API_KEY;
     if (!API_KEY) {

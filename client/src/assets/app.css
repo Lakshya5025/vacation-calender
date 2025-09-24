@@ -42,12 +42,9 @@ th {
     height: auto;
 }
 
-.day-cell {
-    background-color: white;
-}
+.day-cell {}
 
 .day-cell.other-month {
-    background-color: #c1c5cd;
     color: #686262;
 }
 
@@ -64,20 +61,16 @@ th {
     border-radius: 3px;
 }
 
-/* --- Row Coloring Logic --- */
 .week-row.light-green {
-    background-color: #2a5a2a;
-    /* Light Green */
+    background-color: #6fcc6f;
 }
 
 .week-row.dark-green {
-    background-color: #003300;
-    /* Dark Green */
+    background-color: #0e580e;
 }
 
 
 
-/* Add this to the end of App.css */
 .calendar-view.quarterly,
 .calendar-view.yearly {
     display: flex;
