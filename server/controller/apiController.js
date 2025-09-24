@@ -1,6 +1,7 @@
 
 const axios = require('axios');
 const getPublicHolidays = async (req, res) => {
+    console.log("request made to getpublic  holidatas")
     const { countryCode, year } = req.params;
     const API_KEY = process.env.API_KEY;
     if (!API_KEY) {
@@ -18,6 +19,8 @@ const getPublicHolidays = async (req, res) => {
 
 
 const getLocation = async (req, res) => {
+    console.log("request made to get location")
+
     try {
         const { data } = await axios.get('http://ip-api.com/json/');
 

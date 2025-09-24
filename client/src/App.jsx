@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import "./assets/App.css";
 import CountrySelector from "./components/CountrySelector";
-import MonthGrid from "./components/calendar/MonthGrid"; //
+import CalendarView from "./components/calendar/CalendarView";
+import ViewSwitcher from "./components/ViewSwitcher";
 import { fetchLocation, fetchPublicHolidays } from "./api/apiService";
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [holidays, setHolidays] = useState([]);
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate] = useState(new Date());
   const [loading, setLoading] = useState(true);
+  const [view, setView] = useState("monthly");
 
-  // 1. Fetch the initial location when the app loads
   useEffect(() => {
     const getInitialLocation = async () => {
       const location = await fetchLocation();
@@ -20,7 +22,6 @@ function App() {
     getInitialLocation();
   }, []);
 
-  // 2. Fetch holidays whenever the selected country or year changes
   useEffect(() => {
     if (selectedCountry) {
       setLoading(true);
@@ -38,20 +39,21 @@ function App() {
   }, [selectedCountry, currentDate]);
 
   return (
-    <div className="app">
+    <div className="App">
       <header className="App-header">
         <h1>Vacation Calendar</h1>
         <CountrySelector
           selectedCountry={selectedCountry}
           setSelectedCountry={setSelectedCountry}
         />
+        <ViewSwitcher currentView={view} setCurrentView={setView} />
 
         {loading ? (
           <p>Loading holidays...</p>
         ) : (
-          <MonthGrid
-            month={currentDate.getMonth()}
-            year={currentDate.getFullYear()}
+          <CalendarView
+            view={view}
+            currentDate={currentDate}
             allHolidays={holidays}
           />
         )}

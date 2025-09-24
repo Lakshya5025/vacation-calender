@@ -43,12 +43,12 @@ th {
 }
 
 .day-cell {
-    background-color: #333;
+    background-color: white;
 }
 
 .day-cell.other-month {
-    background-color: #282c34;
-    color: #666;
+    background-color: #c1c5cd;
+    color: #686262;
 }
 
 .day-number {
@@ -73,4 +73,26 @@ th {
 .week-row.dark-green {
     background-color: #003300;
     /* Dark Green */
+}
+
+
+
+/* Add this to the end of App.css */
+.calendar-view.quarterly,
+.calendar-view.yearly {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+}
+
+.calendar-view.yearly .month-grid {
+    flex-basis: 30%;
+    /* Roughly 3 columns */
+}
+
+.view-switcher button.active {
+    background-color: #61dafb;
+    color: #282c34;
+    font-weight: bold;
 }
