@@ -9,7 +9,7 @@ const DayCell = ({ day, month, holidays }) => {
       <div className="day-number">{format(day, "d")}</div>
       <div className="holidays">
         {holidays.map((h) => (
-          <div key={h.uuid || h.date} className="holiday-name">
+          <div key={h.date} className="holiday-name">
             {h.name}
           </div>
         ))}

@@ -10,7 +10,7 @@ const WeekRow = ({ weekStart, month, allHolidays }) => {
   const weekEnd = endOfWeek(weekStart, { weekStartsOn: 0 });
   const daysInWeek = eachDayOfInterval({ start: weekStart, end: weekEnd });
 
-  // --- CORE COLORING LOGIC ---
+  // color logic
   const holidaysInThisWeek = allHolidays.filter((holiday) =>
     isWithinInterval(new Date(holiday.date.iso), {
       start: weekStart,
@@ -24,7 +24,6 @@ const WeekRow = ({ weekStart, month, allHolidays }) => {
   } else if (holidaysInThisWeek.length > 1) {
     rowClassName += " dark-green";
   }
-  // -------------------------
 
   return (
     <tr className={rowClassName}>
