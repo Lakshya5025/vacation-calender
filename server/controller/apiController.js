@@ -2,8 +2,8 @@
 const axios = require('axios');
 const getPublicHolidays = async (req, res) => {
     const { countryCode, year } = req.params;
-    const apiKey = process.env.API_KEY;
-    if (!apiKey) {
+    const API_KEY = process.env.API_KEY;
+    if (!API_KEY) {
         return res.status(500).json({ message: 'API key is missing.' });
     }
     const url = `https://calendarific.com/api/v2/holidays?&api_key=${API_KEY}&country=${countryCode}&year=${year}`;

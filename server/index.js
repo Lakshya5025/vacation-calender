@@ -4,7 +4,6 @@ const { getPublicHolidays, getLocation } = require("./controller/apiController")
 require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
 const cors = require('cors');
-const apiRoutes = require('./routes/apiRoutes');
 
 const app = express();
 const PORT = process.env.PORT;
@@ -15,8 +14,8 @@ app.use(express.json());
 app.enable('trust proxy');
 
 // Routes
-app.get('api/holidays/public/:countryCode/:year', getPublicHolidays);
-app.get('api/location', getLocation);
+app.get('/api/holidays/public/:countryCode/:year', getPublicHolidays);
+app.get('/api/location', getLocation);
 
 // Start the Server 
 app.listen(PORT, () => {
