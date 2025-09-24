@@ -47,6 +47,7 @@ th {
 .day-cell.other-month {
     color: #686262;
     background-color: #e4e4e4;
+    /* display: none; */
 }
 
 .day-number {

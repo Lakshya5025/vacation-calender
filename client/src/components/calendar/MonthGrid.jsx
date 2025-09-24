@@ -29,14 +29,17 @@ const MonthGrid = ({ month, year, allHolidays }) => {
           </tr>
         </thead>
         <tbody>
-          {weeks.map((weekStart, index) => (
-            <WeekRow
-              key={index}
-              weekStart={weekStart}
-              month={month}
-              allHolidays={allHolidays}
-            />
-          ))}
+          {weeks.map((weekStart, index) => {
+            // console.log(weekStart);
+            return (
+              <WeekRow
+                key={index}
+                weekStart={weekStart}
+                month={month}
+                allHolidays={allHolidays}
+              />
+            );
+          })}
         </tbody>
       </table>
     </div>

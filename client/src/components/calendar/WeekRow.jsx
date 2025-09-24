@@ -8,9 +8,11 @@ import DayCell from "./DayCell";
 
 const WeekRow = ({ weekStart, month, allHolidays }) => {
   const weekEnd = endOfWeek(weekStart, { weekStartsOn: 0 });
+  // console.log(weekEnd);
   const daysInWeek = eachDayOfInterval({ start: weekStart, end: weekEnd });
-
+  console.log(daysInWeek);
   // color logic
+
   const holidaysInThisWeek = allHolidays.filter((holiday) =>
     isWithinInterval(new Date(holiday.date.iso), {
       start: weekStart,
