@@ -1,8 +1,6 @@
 const express = require('express');
-const path = require('path');
 const { getPublicHolidays, getLocation } = require("./controller/apiController")
-require('dotenv').config({ path: path.resolve(__dirname, './.env') });
-
+require('dotenv').config();
 const cors = require('cors');
 
 const app = express();
