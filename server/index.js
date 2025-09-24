@@ -1,20 +1,24 @@
-const axios = require('axios');
-require('dotenv').config();
-const country = "IN";
-const year = 2025;
-const month = 2;
-const API_KEY = process.env.API_KEY
-console.log(API_KEY);
-async function holidays() {
+const express = require('express');
+const path = require('path');
+const { getPublicHolidays, getLocation } = require("./controller/apiController")
+require('dotenv').config({ path: path.resolve(__dirname, './.env') });
 
-    try {
-        const response = await axios.get(`https://calendarific.com/api/v2/holidays?&api_key=${API_KEY}&country=${country}&year=2025`)
-        const data = response.json();
-        console.log(data);
-    }
-    catch (err) {
-        console.log(err.message);
-    }
-}
+const cors = require('cors');
+const apiRoutes = require('./routes/apiRoutes');
 
-holidays();
+const app = express();
+const PORT = process.env.PORT;
+
+// Middleware
+app.use(cors());
+app.use(express.json());
+app.enable('trust proxy');
+
+// Routes
+app.get('api/holidays/public/:countryCode/:year', getPublicHolidays);
+app.get('api/location', getLocation);
+
+// Start the Server 
+app.listen(PORT, () => {
+    console.log(`Server is running on port http://localhost:${PORT}`);
+});
