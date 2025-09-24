@@ -16,20 +16,19 @@ const getPublicHolidays = async (req, res) => {
     }
 };
 
-const getLocation = async (req, res) => {
-    console.log("getlocattioni route")
-    try {
-        let ip = req.ip;
-        if (ip === '::1' || ip === '127.0.0.1') {
-            const { data } = await axios.get('http://ip-api.com/json/8.8.8.8');
-            return res.json({ countryCode: data.countryCode });
-        }
 
-        const { data } = await axios.get(`http://ip-api.com/json/${ip}`);
-        res.json({ countryCode: data.countryCode });
+const getLocation = async (req, res) => {
+    try {
+        const { data } = await axios.get('http://ip-api.com/json/');
+
+        if (data.status === 'success') {
+            res.json({ countryCode: data.countryCode });
+        } else {
+            res.status(500).json({ countryCode: 'IN' });
+        }
     } catch (error) {
         console.error('Error fetching location:', error.message);
-        res.status(500).json({ countryCode: 'US' });
+        res.status(500).json({ countryCode: 'IN' });
     }
 };
 
