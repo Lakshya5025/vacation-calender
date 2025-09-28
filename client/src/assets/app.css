@@ -1,7 +1,5 @@
 .app {
-    text-align: center;
-    padding: 2rem;
-    color: white;
+    margin: 0 100px;
 }
 
 .App-header {
@@ -67,8 +65,12 @@ th {
     background-color: #6fcc6f;
 }
 
-.week-row.dark-green {
-    background-color: #0e580e;
+.week-row.pink {
+    background-color: pink;
+}
+
+.week-row.yellow {
+    background-color: yellow;
 }
 
 

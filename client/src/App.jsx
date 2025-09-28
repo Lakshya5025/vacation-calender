@@ -4,11 +4,12 @@ import CountrySelector from "./components/CountrySelector";
 import CalendarView from "./components/calendar/CalendarView";
 import ViewSwitcher from "./components/ViewSwitcher";
 import { fetchLocation, fetchPublicHolidays } from "./api/apiService";
+import Navigation from "./components/Navigation";
 
 function App() {
   const [selectedCountry, setSelectedCountry] = useState("");
   const [holidays, setHolidays] = useState([]);
-  const [currentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [loading, setLoading] = useState(true);
   const [view, setView] = useState("monthly");
 
@@ -39,7 +40,7 @@ function App() {
   }, [selectedCountry, currentDate]);
 
   return (
-    <div className="App">
+    <div className="app">
       <header className="App-header">
         <h1>Vacation Calendar</h1>
         <CountrySelector
@@ -47,7 +48,7 @@ function App() {
           setSelectedCountry={setSelectedCountry}
         />
         <ViewSwitcher currentView={view} setCurrentView={setView} />
-
+        <Navigation currentDate={currentDate} setCurrentDate={setCurrentDate} />
         {loading ? (
           <p>Loading holidays...</p>
         ) : (
