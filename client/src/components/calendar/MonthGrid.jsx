@@ -4,8 +4,7 @@ import WeekRow from "./WeekRow";
 const MonthGrid = ({ month, year, allHolidays }) => {
   const startDate = startOfMonth(new Date(year, month));
   const endDate = endOfMonth(startDate);
-  // console.log(startDate);
-  // console.log(endDate);
+
   const weeks = eachWeekOfInterval(
     {
       start: startDate,
@@ -13,8 +12,6 @@ const MonthGrid = ({ month, year, allHolidays }) => {
     },
     { weekStartsOn: 0 }
   );
-
-  // console.log(weeks);
 
   return (
     <div className="month-grid">
